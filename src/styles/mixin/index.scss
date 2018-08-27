@@ -1,0 +1,15 @@
+@function px2vh($values) {
+  $root: 1080px;
+  $unit: vh;
+  $list: ();
+  @each $v in $values {
+    $res: 0;
+    @if ($v == 0 or $v == auto or unit($v) == rem or unit($v) == em or unit($v) == vw or unit($v) == vh){
+      $res: $v;
+    }@else{
+      $res: ($v + 0px) / $root * 100 + $unit;
+    }
+    $list: append($list, $res);
+  }
+  @return $list;
+}
