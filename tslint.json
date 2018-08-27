@@ -1,19 +1,28 @@
 {
-  "defaultSeverity": "warning",
-  "extends": [
-    "tslint:recommended"
-  ],
-  "linterOptions": {
-    "exclude": [
-      "node_modules/**"
-    ]
-  },
+  "extends": "tslint-config-alloy",
   "rules": {
-    "quotemark": [true, "single"],
-    "indent": [true, "spaces", 2],
-    "interface-name": false,
-    "ordered-imports": false,
-    "object-literal-sort-keys": false,
-    "no-consecutive-blank-lines": false
-  }
+    "no-parameter-properties":false,
+    "triple-equals":false,
+    "no-debugger": false,
+    "no-trailing-whitespace": false,
+    "member-ordering":false,
+    "semicolon":[true, "never", "ignore-interfaces"],
+    "no-this-assignment": [true, {"allowed-names": ["^self$","^that$"], "allow-destructuring": true}],
+    "only-arrow-functions": [
+      false,
+      "allow-declarations",
+      "allow-named-functions"
+    ],
+    "no-empty": [
+      false,
+      "allow-empty-catch"
+    ],
+    "no-unnecessary-type-assertion": false,
+    "return-undefined": false,
+    "no-for-in-array": false,
+    "comment-format": [true, "check-space"]
+  },
+  "rulesDirectory": [
+    "node_modules/tslint-eslint-rules/dist/rules"
+  ]
 }
