@@ -3,9 +3,6 @@
         <h1>智慧实验室管理平台</h1>
         <wrapper class="main-wrapper">
             <div slot="content">
-
-
-
             </div>
         </wrapper>
     </div>
