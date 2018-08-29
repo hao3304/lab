@@ -60,17 +60,41 @@
                 </div>
             </Col>
             <Col :span="8">
-                <div class="row__item top">123</div>
+                <div class="row__item top">
+                    <div class="row__item-header">
+                        耗材性质分类分析
+                    </div>
+                </div>
             </Col>
             <Col :span="8">
-                <div class="row__item top">123</div>
+                <div class="row__item top">
+                    <div class="row__item-header">
+                            日累计实验人数
+                    </div>
+                </div>
+            </Col>
+        </Row>
+        <Row :gutter="20" class="row">
+            <Col :span="12">
+                <div class="row__item bottom">
+                    <div class="row__item-header">
+                        实验室用水量趋势图
+                    </div>
+                </div>
+            </Col>
+            <Col :span="12">
+                <div class="row__item bottom">
+                    <div class="row__item-header">
+                        实验室用电量趋势图
+                    </div>
+                </div>
             </Col>
         </Row>
     </div>
 </template>
 
 <script lang="ts">
-    import AnimatedNumber from "animated-number-vue"
+    import AnimatedNumber from 'animated-number-vue'
     import { Component, Vue } from 'vue-property-decorator'
     @Component({
         components: {
@@ -78,8 +102,8 @@
         }
     })
     export default class Home extends Vue {
-        public formatValue(value):number {
-            return parseInt(value)
+        public formatValue(value: string): number {
+            return parseInt(value, 10)
         }
     }
 </script>
@@ -92,6 +116,7 @@
         padding: 15px 25px;
 
         .row {
+            margin-bottom: px2vh(20px);
             &__item {
                 border: 1px solid #363c84;
                 box-sizing: border-box;
@@ -124,10 +149,10 @@
                         border-radius: 10px;
                         margin-bottom: px2vh(18px);
                         overflow: hidden;
-                        padding-left: 40px;
+                        padding-left: 20px;
 
                         h5 {
-                            margin-top: px2vh(24);
+                            margin-top: px2vh(20);
                             font-weight: 400;
                             color: #fff;
                             font-size: 14px;
@@ -142,7 +167,9 @@
                 }
             }
 
-
+            .bottom {
+                height: px2vh(530px);
+            }
         }
     }
 </style>
