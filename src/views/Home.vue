@@ -148,7 +148,7 @@ import * as options from './homechart/options'
 })
 
 export default class Home extends Vue {
-    public formatValue(value): number {
+    public formatValue(value: any): number {
         return parseInt(value)
     }
 }
