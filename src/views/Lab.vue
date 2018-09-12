@@ -40,11 +40,13 @@
         height: 100%;
         &__slider {
             width: 240px;
+            flex-basis: 240px;
             background-color: #3a3f4e;
+            flex-shrink: 0;
         }
 
         &__main {
-            flex: 1;
+            flex: auto;
             display: flex;
             flex-direction: column;
         }

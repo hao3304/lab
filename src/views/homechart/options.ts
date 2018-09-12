@@ -49,6 +49,7 @@ export let hcxzOption: object = {
     series: [{
         name: '访问来源',
         type: 'pie',
+        color: ['#f35453', '#ff8e47', '#02cdc2', '#319d6e', '#56adf0', '#965fe9'],
         radius: ['40%', '80%'],
         center: ['30%', '50%'],
         avoidLabelOverlap: false,
@@ -73,27 +74,27 @@ export let hcxzOption: object = {
             }
         },
         data: [{
-                value: 335,
+                value: 514,
                 name: '易燃易爆固体'
             },
             {
-                value: 310,
+                value: 267.28,
                 name: '易燃液体试剂'
             },
             {
-                value: 234,
+                value: 246.72,
                 name: '氧化性试剂'
             },
             {
-                value: 135,
+                value: 143.92,
                 name: '毒害性试剂'
             },
             {
-                value: 1548,
+                value: 82.24,
                 name: '腐蚀性试剂'
             },
             {
-                value: 128,
+                value: 760.72,
                 name: '低温存放试剂'
             }
         ]
@@ -102,7 +103,7 @@ export let hcxzOption: object = {
 
 export let rljOption = {
     tooltip: {
-        show: false
+        show: true
     },
     grid: {
         left: '5%',
@@ -151,7 +152,8 @@ export let rljOption = {
         type: 'bar',
         barWidth: '20%',
         itemStyle: {
-            color: ['#40E0D0']
+            color: ['#40E0D0'],
+            barBorderRadius:5,
         },
         emphasis: {
             itemStyle: {

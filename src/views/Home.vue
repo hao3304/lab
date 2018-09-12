@@ -146,6 +146,7 @@ import * as options from './homechart/options'
 
     }
 })
+
 export default class Home extends Vue {
     public formatValue(value): number {
         return parseInt(value)
@@ -179,6 +180,7 @@ export default class Home extends Vue {
                 &-content {
                     flex: 1;
                     &-echart{
+                        width:100%;
                         height:100%;
                     }
                 }
