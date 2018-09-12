@@ -124,12 +124,12 @@ import * as options from './homechart/options'
     components: {
         AnimatedNumber
     },
-    data(){
+    data() {
         return {
             
         }
     },
-    mounted(){
+    mounted() {
         let hcxzEchart = echarts.init(document.querySelector('#hxxz-echart') as HTMLDivElement)
         hcxzEchart.setOption(options.hcxzOption)
 
@@ -148,8 +148,8 @@ import * as options from './homechart/options'
 })
 
 export default class Home extends Vue {
-    public formatValue(value): number {
-        return parseInt(value)
+    public formatValue(value: any): number {
+        return parseInt(value, 10)
     }
 }
 </script>
