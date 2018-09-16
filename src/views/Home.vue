@@ -64,8 +64,10 @@
                     <div class="row__item-header">
                         耗材性质分类分析
                     </div>
-                    <div class="row__item-content">
-                        <div class="chart-block" ref="chart1"></div>
+                    <div class="row__item-content top-left">
+                        <div id="hxxz-echart" class="row__item-content-echart">
+                           
+                        </div>
                     </div>
                 </div>
             </Col>
@@ -74,119 +76,92 @@
                     <div class="row__item-header">
                         日累计实验人数
                     </div>
+                    <div class="row__item-content top-left">
+                        <div id="rlj-echart" class="row__item-content-echart">
+                           
+                        </div>
+                    </div>
                 </div>
             </Col>
         </Row>
-        <Row :gutter="20" class="row">
+         <Row :gutter="20" class="row">
             <Col :span="12">
                 <div class="row__item bottom">
                     <div class="row__item-header">
-                        实验室用水量趋势图
+                        耗材性质分类分析
+                    </div>
+                     <div class="row__item-content top-left">
+                        <div id="sysysl-echart" class="row__item-content-echart">
+                           
+                        </div>
                     </div>
                 </div>
-            </Col>
-            <Col :span="12">
+             </Col>
+             <Col :span="12">
                 <div class="row__item bottom">
-                    <div class="row__item-header">
-                        实验室用电量趋势图
-                    </div>
+                      <div class="row__item-header">
+                          实验室用电量趋势图
+                      </div>
+                       <div class="row__item-content top-left">
+                          <div id="sysydl-echart" class="row__item-content-echart">
+                            
+                          </div>
+                      </div>
                 </div>
-            </Col>
+             </Col>
         </Row>
     </div>
 </template>
 
 <script lang="ts">
-    import AnimatedNumber from 'animated-number-vue'
-    import { Component, Vue } from 'vue-property-decorator'
-    import eCharts from 'echarts'
+import echarts from 'echarts'
+import AnimatedNumber from 'animated-number-vue'
+import { Component, Vue } from 'vue-property-decorator'
+import * as options from './homechart/options'
 
-    @Component({
-        components: {
-            AnimatedNumber
-        }
-    })
-    export default class Home extends Vue {
-        public $refs: any
-        public formatValue(value: string): number {
-            return parseInt(value, 10)
-        }
 
-        public renderChart1(): void {
-            const $el =  this.$refs['chart1']
-            const option = {
-                color:['#965fe9', '#f35453', '#ff8e47', '#02cdc2', '#319d6e', '#56adf0'],
-                tooltip: {
-                    trigger: 'item',
-                    formatter: '{a} <br/>{b}: {c} ({d}%)'
-                },
-                legend: {
-                    orient: 'vertical',
-                    right: '10%',
-                    y: 'center',
-                    textStyle: {
-                      color: '#fff'
-                    },
-                    data: ['易燃易爆固体', '易燃液体试剂', '氧化性试剂', '毒害性试剂', '腐蚀性试剂', '低温存放试剂']
-                },
-                series: [
-                    {
-                        name: '耗材性质分类分析',
-                        type: 'pie',
-                        center: ['30%','50%'],
-                        radius: ['35%', '70%'],
-                        avoidLabelOverlap: false,
-                        label: {
-                            normal: {
-                                position: 'inner',
-                                formatter:  (params:Object) => {
-                                    return parseInt(params.percent, 10) + '%'
-                                }
-                            },
-                            emphasis: {
-                                show: true,
-                                textStyle: {
-                                    fontSize: '12',
-                                    fontWeight: 'bold'
-                                }
-                            }
-                        },
-                        labelLine: {
-                            normal: {
-                                show: false
-                            }
-                        },
-                        data: [
-                            {value: 335, name: '易燃易爆固体'},
-                            {value: 310, name: '易燃液体试剂'},
-                            {value: 234, name: '氧化性试剂'},
-                            {value: 135, name: '毒害性试剂'},
-                            {value: 154, name: '腐蚀性试剂'},
-                            {value: 1548, name: '低温存放试剂'}
-                        ]
-                    }
-                ]
-            }
-
-            const myChart = eCharts.init($el)
-            myChart.setOption(option)
+@Component({
+    components: {
+        AnimatedNumber
+    },
+    data(){
+        return {
+            
         }
+    },
+    mounted(){
+        let hcxzEchart = echarts.init(document.querySelector('#hxxz-echart') as HTMLDivElement)
+        hcxzEchart.setOption(options.hcxzOption)
 
-        public mounted(): void {
-            this.renderChart1()
-        }
+        let rljEchart = echarts.init(document.querySelector('#rlj-echart') as HTMLDivElement)
+        rljEchart.setOption(options.rljOption)
+
+        let sysyslEchart = echarts.init(document.querySelector('#sysysl-echart') as HTMLDivElement)
+        sysyslEchart.setOption(options.sysyslOption)
+
+
+        let sysydlEchart = echarts.init(document.querySelector('#sysydl-echart') as HTMLDivElement)
+        sysydlEchart.setOption(options.sysydlOption)
+
+
     }
+})
+
+export default class Home extends Vue {
+    public formatValue(value: any): number {
+        return parseInt(value)
+    }
+}
 </script>
 
 <style lang="scss">
     @import "~@/styles/mixin/index.scss";
+    $top_height: 400px;
     .home{
         height: 100%;
         box-sizing: border-box;
         padding: 15px 25px;
-
         .row {
-            margin-bottom: px2vh(20px);
             &__item {
                 border: 1px solid #363c84;
                 box-sizing: border-box;
@@ -204,11 +179,15 @@
                 }
                 &-content {
                     flex: 1;
+                    &-echart{
+                        width:100%;
+                        height:100%;
+                    }
                 }
             }
 
             .top {
-                height: px2vh(400px);
+                height: px2vh($top_height);
 
                 &-left {
                     padding: px2vh(44px) 28px;
@@ -219,10 +198,10 @@
                         border-radius: 10px;
                         margin-bottom: px2vh(18px);
                         overflow: hidden;
-                        padding-left: 20px;
+                        padding-left: 40px;
 
                         h5 {
-                            margin-top: px2vh(20);
+                            margin-top: px2vh(24);
                             font-weight: 400;
                             color: #fff;
                             font-size: 14px;
@@ -236,10 +215,14 @@
                     }
                 }
             }
-
-            .bottom {
+            .bottom{
+                margin-top:20px;
                 height: px2vh(530px);
+                &-left {
+                    padding: px2vh(44px) 28px;
+                }
             }
+
         }
     }
 </style>
