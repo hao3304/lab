@@ -35,15 +35,15 @@ export default new Router({
                 {
                    path: 'device',
                    component: Device ,
-                   children:[
+                   children: [
                        {
-                           path:'',
-                           name:'baseinfo',
+                           path: '',
+                           name: 'baseinfo',
                            component: DeviceC1
                        },
                        {
-                        path:'baserecord',
-                        name:'br',
+                        path: 'baserecord',
+                        name: 'br',
                         component: DeviceC2
                        }
                    ]

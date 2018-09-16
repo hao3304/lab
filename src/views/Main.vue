@@ -3,6 +3,9 @@
         <h1>智慧实验室管理平台</h1>
         <wrapper class="main-wrapper">
             <div slot="content">
+                <Row  :gutter="20" >
+
+                </Row>
             </div>
         </wrapper>
     </div>
@@ -34,15 +37,15 @@
         height: 100%;
 
         .main-wrapper {
-            height: px2vh(1020px);
-            margin-top: px2vh(60px);
+            height: px2vh(1060px);
+            margin-top: px2vh(20px);
         }
 
         h1 {
             text-align: center;
             color: #fff;
             font-size: 36px;
-            font-weight: 200;
+            font-weight: normal;
             position: absolute;
             width: 100%;
         }

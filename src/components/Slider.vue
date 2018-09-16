@@ -33,16 +33,16 @@
                 name: '设备管理',
                 path: '/device',
                 icon: 'device',
-                children:[
+                children: [
                     {
                         name: '设备基本信息',
                         path: '',
-                        icon:'',
+                        icon: '',
                     } ,
                     {
                         name: '设备使用记录',
                         path: '/baserecord',
-                        icon:'',
+                        icon: '',
                     }      
                 ]
             },
@@ -80,10 +80,9 @@
             this.$router.push('/lab' + this.active)
         }
 
-        public onSonMenuClick(smenu:any, fpath: string){
-            debugger
+        public onSonMenuClick(smenu: any, fpath: string) {
             this.active = `${fpath}${smenu.path}`
-            this.$router.push({name:'br'})
+            this.$router.push({name: 'br'})
         }
     }
 </script>

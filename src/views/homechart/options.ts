@@ -2,7 +2,7 @@ export let hcxzOption: object = {
     tooltip: {
         show: false,
         trigger: 'item',
-        formatter: "{a} <br />{b}: {c} ({d}%)"
+        formatter: '{a} <br />{b}: {c} ({d}%)'
     },
     graphic: {
         type: 'group',
@@ -15,9 +15,9 @@ export let hcxzOption: object = {
                 top: 'center',
                 style: {
                     textAlign: 'center',
-                    text: "总耗材数",
+                    text: '总耗材数',
                     fontSize: 12,
-                    fill: "#fff"
+                    fill: '#fff'
                 }
             },
             {
@@ -26,9 +26,9 @@ export let hcxzOption: object = {
                 top: '12px',
                 style: {
                     textAlign: 'center',
-                    text: "2056",
+                    text: '2056',
                     fontSize: 14,
-                    fill: "#fff",
+                    fill: '#fff',
                     fontStyle: 'bold'
                 }
             }
@@ -153,7 +153,7 @@ export let rljOption = {
         barWidth: '20%',
         itemStyle: {
             color: ['#40E0D0'],
-            barBorderRadius:5,
+            barBorderRadius: 5,
         },
         emphasis: {
             itemStyle: {
@@ -303,14 +303,14 @@ export let sysydlOption = {
         ],
         type: 'line',
         areaStyle: {
-            color: "#E5E5E5",
-            opacity: .5
+            color: '#E5E5E5',
+            opacity: 0.5
         },
         lineStyle: {
-            color: "#E5E5E5"
+            color: '#E5E5E5'
         },
         itemStyle: {
-            color: "#E5E5E5",
+            color: '#E5E5E5',
             borderColor: '#6BACEA',
         }
 
