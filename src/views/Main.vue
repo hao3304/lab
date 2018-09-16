@@ -1,6 +1,14 @@
 <template>
     <div class="page-main">
-        <h1>智慧实验室管理平台</h1>
+        <h1>
+            智慧实验室管理平台
+
+
+        </h1>
+        <div class="toolbar" >
+            <Button type="primary" @click="onRouter('home')">进入后台</Button>
+            <Button  @click="onRouter('login')">退出登录</Button>
+        </div>
         <wrapper class="main-wrapper">
             <div slot="content">
                 <Row  :gutter="10" >
@@ -23,13 +31,24 @@
                                     <Col :span="12">
                                         <div class="row__item-block left">
                                             <p>当前实验总人数（人）</p>
-                                            <h5>286</h5>
+                                            <h5>
+                                                <animated-number
+                                                        value="286"
+                                                        :formatValue="formatValue"
+                                                        :duration="1000"
+                                                />
+                                            </h5>
                                         </div>
                                     </Col>
                                     <Col :span="12">
                                         <div class="row__item-block right">
                                             <p>累计实验总人数（人）</p>
-                                            <h5>22186</h5>
+                                            <h5>
+                                                <animated-number
+                                                        value="22186"
+                                                        :formatValue="formatValue"
+                                                        :duration="1000"></animated-number>
+                                            </h5>
                                         </div>
                                     </Col>
                                 </Row>
@@ -57,25 +76,49 @@
                                         <Col :span="5">
                                             <div class="row__item-block">
                                                 <div class="row__item-block-title">当前访问人数（人）</div>
-                                                <div  class="row__item-block-value">26</div>
+                                                <div  class="row__item-block-value">
+                                                    <animated-number
+                                                            value="26"
+                                                            :formatValue="formatValue"
+                                                            :duration="1000"
+                                                    />
+                                                </div>
                                             </div>
                                         </Col>
                                         <Col :span="5">
                                             <div class="row__item-block">
                                                 <div class="row__item-block-title">今日访问人数（人）</div>
-                                                <div  class="row__item-block-value">59</div>
+                                                <div  class="row__item-block-value">
+                                                    <animated-number
+                                                            value="59"
+                                                            :formatValue="formatValue"
+                                                            :duration="1000"
+                                                    />
+                                                </div>
                                             </div>
                                         </Col>
                                         <Col :span="6">
                                             <div class="row__item-block">
                                                 <div class="row__item-block-title">平台累计访问人数（人）</div>
-                                                <div  class="row__item-block-value">4356</div>
+                                                <div  class="row__item-block-value">
+                                                    <animated-number
+                                                            value="4356"
+                                                            :formatValue="formatValue"
+                                                            :duration="1000"
+                                                    />
+                                                </div>
                                             </div>
                                         </Col>
                                         <Col :span="8">
                                             <div class="row__item-block">
                                                 <div class="row__item-block-title">累计平台使用时间（分）</div>
-                                                <div  class="row__item-block-value">564623</div>
+                                                <div  class="row__item-block-value">
+                                                    <animated-number
+                                                            value="563456"
+                                                            :formatValue="formatValue"
+                                                            :duration="1000"
+                                                    />
+                                                </div>
                                             </div>
                                         </Col>
                                     </Row>
@@ -83,19 +126,37 @@
                                         <Col :span="6">
                                             <div class="row__item-block">
                                                 <div class="row__item-block-title">当前实验人数（分）</div>
-                                                <div  class="row__item-block-value">263</div>
+                                                <div  class="row__item-block-value">
+                                                    <animated-number
+                                                            value="264"
+                                                            :formatValue="formatValue"
+                                                            :duration="1000"
+                                                    />
+                                                </div>
                                             </div>
                                         </Col>
                                         <Col :span="6">
                                             <div class="row__item-block">
                                                 <div class="row__item-block-title">设备总数（台）</div>
-                                                <div  class="row__item-block-value">258</div>
+                                                <div  class="row__item-block-value">
+                                                    <animated-number
+                                                            value="256"
+                                                            :formatValue="formatValue"
+                                                            :duration="1000"
+                                                    />
+                                                </div>
                                             </div>
                                         </Col>
                                         <Col :span="6">
                                             <div class="row__item-block">
                                                 <div class="row__item-block-title">耗材总数（个）</div>
-                                                <div  class="row__item-block-value">2012</div>
+                                                <div  class="row__item-block-value">
+                                                    <animated-number
+                                                            value="3941"
+                                                            :formatValue="formatValue"
+                                                            :duration="1000"
+                                                    />
+                                                </div>
                                             </div>
                                         </Col>
                                         <Col :span="6">
@@ -188,6 +249,23 @@
                                             <Tag color="primary">实验中</Tag>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>蒸馏水器</td>
+                                        <td>实验室二</td>
+                                        <td>
+                                            <Tag color="primary">实验中</Tag>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>9</td>
+                                        <td>蒸馏水器</td>
+                                        <td>实验室三</td>
+                                        <td>
+                                            <Tag color="primary">实验中</Tag>
+                                        </td>
+                                    </tr>
+
                                 </table>
                             </div>
                         </div>
@@ -211,13 +289,19 @@
     import wrapper from '@/components/Wrapper.vue'
     import echarts from 'echarts'
     import { hcxzOption, rljOption, sysyslOption, sysydlOption } from '@/views/homechart/options'
+    import AnimatedNumber from 'animated-number-vue'
 
     @Component({
         components: {
-            wrapper
+            wrapper,
+            AnimatedNumber
         }
     })
     export default class Main extends Vue {
+
+        public formatValue(value: any): number {
+            return parseInt(value, 10)
+        }
 
         renderOne(): void {
 
@@ -245,6 +329,10 @@
             chart.setOption(sysydlOption)
         }
 
+        public onRouter(router: string): void {
+            this.$router.push({name: router})
+        }
+
 
         public mounted(): void {
             this.renderOne()
@@ -264,6 +352,17 @@
         background-size: 100% 100%;
         overflow: hidden;
         height: 100%;
+
+        .toolbar {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            z-index: 100;
+            button {
+                width: 100px;
+                margin: 10px;
+            }
+        }
 
         .main-wrapper {
             height: px2vh(1060px);
