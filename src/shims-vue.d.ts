@@ -6,3 +6,4 @@ declare module '*.vue' {
 declare module 'iview'
 declare module 'echarts'
 declare module 'animated-number-vue'
+declare module '@antv/g2'

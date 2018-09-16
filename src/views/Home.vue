@@ -66,7 +66,7 @@
                     </div>
                     <div class="row__item-content top-left">
                         <div id="hxxz-echart" class="row__item-content-echart">
-                           
+
                         </div>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
                     </div>
                     <div class="row__item-content top-left">
                         <div id="rlj-echart" class="row__item-content-echart">
-                           
+
                         </div>
                     </div>
                 </div>
@@ -92,7 +92,7 @@
                     </div>
                      <div class="row__item-content top-left">
                         <div id="sysysl-echart" class="row__item-content-echart">
-                           
+
                         </div>
                     </div>
                 </div>
@@ -104,7 +104,7 @@
                       </div>
                        <div class="row__item-content top-left">
                           <div id="sysydl-echart" class="row__item-content-echart">
-                            
+
                           </div>
                       </div>
                 </div>
@@ -126,7 +126,7 @@ import * as options from './homechart/options'
     },
     data() {
         return {
-            
+
         }
     },
     mounted() {
@@ -138,7 +138,6 @@ import * as options from './homechart/options'
 
         let sysyslEchart = echarts.init(document.querySelector('#sysysl-echart') as HTMLDivElement)
         sysyslEchart.setOption(options.sysyslOption)
-
 
         let sysydlEchart = echarts.init(document.querySelector('#sysydl-echart') as HTMLDivElement)
         sysydlEchart.setOption(options.sysydlOption)
@@ -161,30 +160,6 @@ export default class Home extends Vue {
         box-sizing: border-box;
         padding: 15px 25px;
         .row {
-            &__item {
-                border: 1px solid #363c84;
-                box-sizing: border-box;
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-
-                &-header {
-                    height: px2vh(42px);
-                    line-height: px2vh(42px);
-                    color: #01efbb;
-                    padding: 0 30px;
-                    border-bottom: 1px solid #363c84;
-                    box-sizing: border-box;
-                }
-                &-content {
-                    flex: 1;
-                    &-echart{
-                        width:100%;
-                        height:100%;
-                    }
-                }
-            }
-
             .top {
                 height: px2vh($top_height);
 

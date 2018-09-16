@@ -20,6 +20,7 @@ export default new Router({
         {
             path: '/main',
             name: 'main',
+            alias: '/',
             component: Main
         },
         {
