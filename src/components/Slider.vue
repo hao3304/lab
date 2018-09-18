@@ -19,10 +19,10 @@
 <script lang="ts">
     import { Component, Vue, Prop } from 'vue-property-decorator'
     interface IMenu{
-        name: string,
-        path: string,
-        icon: string,
-        children:Array<IMenu>
+        name?: string,
+        path?: string,
+        icon?: string,
+        children?:Array<IMenu>
     }
 
     @Component({
@@ -34,7 +34,7 @@
     })
     export default class Slider extends Vue {
         
-        public currentMenu!: IMenu
+        public currentMenu: IMenu = {}
 
         public menus: object[] = [
             {
@@ -89,7 +89,9 @@
 
         public onMenuClick(menu: any): void {
             if(menu.name==this.currentMenu.name){
-                
+                this.currentMenu = {}
+                this.active = ''
+                return 
             }
 
             if(!!menu.children) {
