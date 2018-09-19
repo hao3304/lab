@@ -7,6 +7,7 @@ import Home from '@/views/Home.vue'
 import Device from '@/views/Device.vue'
 import DeviceC1 from '@/views/DeviceC1.vue'
 import DeviceC2 from '@/views/DeviceC2.vue'
+import Energy from '@/views/Energy.vue'
 
 Vue.use(Router)
 
@@ -32,6 +33,11 @@ export default new Router({
                     path: '',
                     name: 'home',
                     component: Home
+                },
+                {
+                    path: 'energy',
+                    name: 'energy',
+                    component: Energy
                 },
                 {
                    path: 'device',
