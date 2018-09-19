@@ -7,7 +7,7 @@
             <li v-for="menu in menus" @click="onMenuClick(menu)" :key="menu.path" class="slider__menu-item" :class="{'slider__menu-item--active': active == menu.name}">
                 {{menu.name}}
                 <ul v-if="!!currentMenu.children&& currentMenu.path == menu.path" class="slider__menu-item-sonitem" >
-                    <li v-for="sm in currentMenu.children" :key="sm.path" @click.stop="onMenuClick(sm)" :class="{'slider__menu-item--active': active == sm.name}">
+                    <li v-for="sm in currentMenu.children" :key="sm.path" @click.stop="onSonMenuClick(sm)" :class="{'slider__menu-item--active': active == sm.name}">
                         {{sm.name}}
                     </li>
                 </ul>
@@ -17,20 +17,15 @@
 </template>
 
 <script lang="ts">
-    import { Component, Vue, Prop } from 'vue-property-decorator'
+    import { Component, Vue } from 'vue-property-decorator'
     interface IMenu{
         name?: string,
         path?: string,
         icon?: string,
-        children?:Array<IMenu>
+        children?: Array<IMenu>
     }
 
     @Component({
-        watch:{
-            current(v,ov){
-
-            }
-        }
     })
     export default class Slider extends Vue {
         
@@ -46,16 +41,16 @@
                 name: '设备管理',
                 path: '',
                 icon: 'device',
-                children:[
+                children: [
                     {
                         name: '设备基本信息',
                         path: '/deviceinfo',
-                        icon:'',
+                        icon: '',
                     } ,
                     {
                         name: '设备使用记录',
                         path: '/devicerecord',
-                        icon:'',
+                        icon: '',
                     }      
                 ]
             },
@@ -88,19 +83,19 @@
         public active: string = '/home'
 
         public onMenuClick(menu: any): void {
-            if(menu.name==this.currentMenu.name){
+            if (menu.name === this.currentMenu.name) {
                 this.currentMenu = {}
                 this.active = ''
                 return 
             }
-
-            if(!!menu.children) {
-                this.currentMenu = menu
-            }
+            this.currentMenu = menu
             this.active = menu.name
-            if(!!menu.path) {
-                this.$router.push('/lab' + menu.path)
-            }
+        }
+
+        public onSonMenuClick(smenu: any) {
+            debugger
+            this.active = smenu.name
+            this.$router.push({name: smenu.name})
         }
     }
 </script>

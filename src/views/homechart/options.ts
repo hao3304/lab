@@ -148,7 +148,7 @@ export let rljOption = {
 
     }],
     series: [{
-        name: '直接访问',
+        name: '人数',
         type: 'bar',
         barWidth: '20%',
         itemStyle: {
@@ -169,8 +169,8 @@ export let sysyslOption = {
         show: false
     },
     grid: {
-        left: '5%',
-        right: '10%',
+        left: '0',
+        right: '5%',
         bottom: '3%',
         containLabel: true,
     },
@@ -252,6 +252,12 @@ export let sysyslOption = {
 
 
 export let sysydlOption = {
+    grid: {
+        left: '0',
+        right: '5%',
+        bottom: '3%',
+        containLabel: true,
+    },
     xAxis: {
         type: 'category',
         boundaryGap: false,

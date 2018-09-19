@@ -19,6 +19,7 @@ export default new Router({
         {
             path: '/main',
             name: 'main',
+            alias: '/',
             component: Main
         },
         {
@@ -33,12 +34,12 @@ export default new Router({
                 },
                 {
                    path: 'deviceinfo',
-                   name: 'deviceinfo',
+                   name: '设备基本信息',
                    component: DeviceInfo 
                 },
                 { 
                     path: 'devicerecord',
-                    name: 'devicerecord',
+                    name: '设备使用记录',
                     component: DeviceRecord
                 }
             ]

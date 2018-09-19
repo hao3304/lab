@@ -1,5 +1,10 @@
 {
   "extends": "tslint-config-alloy",
+  "linterOptions": {
+    "exclude": [
+      "node_modules/**"
+    ]
+  },
   "rules": {
     "no-parameter-properties":false,
     "triple-equals":false,
