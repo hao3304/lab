@@ -1,23 +1,23 @@
 <template>
     <div class="deviceinfo">
-        <p class="deviceinfo__bread">设备管理>设备使用信息</p>
+        <p class="deviceinfo__bread">耗材管理</p>
         <div class="deviceinfo__content">
             <div class="deviceinfo__content-search">
                 <div class="deviceinfo__content-search-item">
                     <div>
-                        设备名称:
+                        耗材名称:
                         <Input v-model="name" style="width:auto;" />
                     </div>
                 </div>
                 <div class="deviceinfo__content-search-item">
                     <div>
-                        设备位置:
+                        耗材批号:
                         <Input v-model="position" style="width:auto;" />
                     </div>
                 </div>
                 <div class="deviceinfo__content-search-item">
                     <div>
-                        设备状态:
+                        耗材状态:
                         <Input v-model="status" style="width:auto;" />
                     </div>
                 </div>
@@ -56,7 +56,7 @@
         }
     })
 
-    export default class DeviceInfo extends Vue {
+    export default class Material extends Vue {
         columns1: Array < object > = [{
                 type: 'index',
                 title: '序号',
@@ -64,47 +64,39 @@
                 align: 'center'
             },
             {
-                title: '设备名称',
+                title: '耗材类别',
+                key: 'category'
+            },
+            {
+                title: '耗材名称',
                 key: 'name'
             },
             {
-                title: '设备编号',
+                title: '耗材编号',
                 width: 180,
                 key: 'code'
             },
             {
-                title: '设备位置',
-                key: 'position'
+                title: '最近购入时间',
+                key: 'buytime'
             },
             {
-                title: '数量',
+                title: '总量',
                 key: 'quantity',
             },
             {
-                title: '购买日期',
-                key: 'buydate'
+                title: '存量',
+                key: 'stock'
             },
             {
-                title: '维修日期',
-                key: 'fixdate',
-            },
-            {
-                title: '累计使用人数',
-                key: 'numofusers'
-            },
-            {
-                title: '累计使用总时长',
-                key: 'useduration'
-            },
-            {
-                title: '运行状态',
+                title: '耗材状态',
                 key: 'action',
                 align: 'center',
                 render: (h: any, params: any) => {
                     return h('div', [
                         h('Button', {
                                 props: {
-                                    type: params.row.action === 1 ? 'primary' : params.row.action ===
+                                    type: params.row.status === 1 ? 'primary' : params.row.status ===
                                         2 ? 'success' : 'error',
                                     size: 'small'
                                 },
@@ -117,132 +109,100 @@
                                         console.log(params)
                                     }
                                 }
-                            }, params.row.action === 1 ? '使用中' : params.row.action === 2 ? '维修中' :
-                            '无法检测')
+                            }, params.row.status === 1 ? '充足' : params.row.status === 2 ? '少量' :
+                            '缺少')
                     ])
                 }
+            },
+            {
+                title: '操作',
+                key: 'operate',
+                align: 'center',
+                render: (h: any, params: any) => {
+                    return h('div', [
+                        h('Button', {
+                                props: {
+                                    size: 'small',
+                                    disabled: 'disabled'
+                                },
+                                style: {
+                                    marginRight: '5px'
+                                },
+                                on: {
+                                    click: () => {
+                                        // this.show(params.index)
+                                        console.log(params)
+                                    }
+                                }
+                            }, '编辑')
+                    ])
+                }
+
             }
+
         ]
         data1: Array < object > = [{
-                name: '酸度计',
-                code: 2018080316043212,
-                position: '实验室一',
-                quantity: 1,
-                buydate: '2018-09-20',
-                fixdate: '2018-09-21',
-                numofusers: '32人',
-                useduration: '20小时50分',
-                action: 1
+                category: '腐蚀性试剂',
+                name: '盐酸',
+                code: '2018080316043212',
+                buytime: '2018-09-21',
+                quantity: '300g',
+                stock: '30g',
+                status: 1
             },
             {
-                name: '酸度计',
-                code: 2018080316043212,
-                position: '实验室一',
-                quantity: 1,
-                buydate: '2018-09-20',
-                fixdate: '2018-09-21',
-                numofusers: '32人',
-                useduration: '20小时50分',
-                action: 1
+                category: '腐蚀性试剂',
+                name: '盐酸',
+                code: '2018080316043212',
+                buytime: '2018-09-21',
+                quantity: '300g',
+                stock: '30g',
+                status: 2
             },
             {
-                name: '酸度计',
-                code: 2018080316043212,
-                position: '实验室一',
-                quantity: 1,
-                buydate: '2018-09-20',
-                fixdate: '2018-09-21',
-                numofusers: '32人',
-                useduration: '20小时50分',
-                action: 2
+                category: '腐蚀性试剂',
+                name: '盐酸',
+                code: '2018080316043212',
+                buytime: '2018-09-21',
+                quantity: '300g',
+                stock: '30g',
+                status: 1
             },
             {
-                name: '酸度计',
-                code: 2018080316043212,
-                position: '实验室一',
-                quantity: 1,
-                buydate: '2018-09-20',
-                fixdate: '2018-09-21',
-                numofusers: '32人',
-                useduration: '20小时50分',
-                action: 1
+                category: '腐蚀性试剂',
+                name: '盐酸',
+                code: '2018080316043212',
+                buytime: '2018-09-21',
+                quantity: '300g',
+                stock: '30g',
+                status: 3
             },
             {
-                name: '酸度计',
-                code: 2018080316043212,
-                position: '实验室一',
-                quantity: 1,
-                buydate: '2018-09-20',
-                fixdate: '2018-09-21',
-                numofusers: '32人',
-                useduration: '20小时50分',
-                action: 3
+                category: '腐蚀性试剂',
+                name: '盐酸',
+                code: '2018080316043212',
+                buytime: '2018-09-21',
+                quantity: '300g',
+                stock: '30g',
+                status: 2
             },
             {
-                name: '酸度计',
-                code: 2018080316043212,
-                position: '实验室一',
-                quantity: 1,
-                buydate: '2018-09-20',
-                fixdate: '2018-09-21',
-                numofusers: '32人',
-                useduration: '20小时50分',
-                action: 1
+                category: '腐蚀性试剂',
+                name: '盐酸',
+                code: '2018080316043212',
+                buytime: '2018-09-21',
+                quantity: '300g',
+                stock: '30g',
+                status: 1
             },
             {
-                name: '酸度计',
-                code: 2018080316043212,
-                position: '实验室一',
-                quantity: 1,
-                buydate: '2018-09-20',
-                fixdate: '2018-09-21',
-                numofusers: '32人',
-                useduration: '20小时50分',
-                action: 2
-            },
-            {
-                name: '酸度计',
-                code: 2018080316043212,
-                position: '实验室一',
-                quantity: 1,
-                buydate: '2018-09-20',
-                fixdate: '2018-09-21',
-                numofusers: '32人',
-                useduration: '20小时50分',
-                action: 1
-            },
-            {
-                name: '酸度计',
-                code: 2018080316043212,
-                position: '实验室一',
-                quantity: 1,
-                buydate: '2018-09-20',
-                fixdate: '2018-09-21',
-                numofusers: '32人',
-                useduration: '20小时50分',
-                action: 1
-            },
-            {
-                name: '酸度计',
-                code: 2018080316043212,
-                position: '实验室一',
-                quantity: 1,
-                buydate: '2018-09-20',
-                fixdate: '2018-09-21',
-                numofusers: '32人',
-                useduration: '20小时50分',
-                action: 3
-            },
-            {
-                name: '酸度计',
-                code: 2018080316043212,
-                position: '实验室一',
-                quantity: 1,
-                buydate: '2018-09-20',
-                fixdate: '2018-09-21',
-                numofusers: '32人',
-                useduration: '20小时50分',
-                action: 2
+                category: '腐蚀性试剂',
+                name: '盐酸',
+                code: '2018080316043212',
+                buytime: '2018-09-21',
+                quantity: '300g',
+                stock: '30g',
+                status: 3
             },
         ]
 

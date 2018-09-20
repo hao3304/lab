@@ -15,6 +15,7 @@
     "cssnano-preset-advanced": "^4.0.0",
     "echarts": "^4.1.0",
     "iview": "^3.1.1-rc.1",
+    "iview-loader": "^1.2.2",
     "postcss-aspect-ratio-mini": "0.0.2",
     "postcss-cssnext": "^3.1.0",
     "postcss-plugin-px2rem": "^0.7.0",

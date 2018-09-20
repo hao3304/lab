@@ -6,6 +6,9 @@ import Lab from '@/views/Lab.vue'
 import Home from '@/views/Home.vue'
 import DeviceInfo from '@/views/DeviceInfo.vue'
 import DeviceRecord from '@/views/DeviceRecord.vue'
+import Material from '@/views/Material.vue'
+import Laboratory from '@/views/Laboratory.vue'
+import Energy from '@/views/Energy.vue'
 
 Vue.use(Router)
 
@@ -41,6 +44,21 @@ export default new Router({
                     path: 'devicerecord',
                     name: '设备使用记录',
                     component: DeviceRecord
+                },
+                {
+                    path: 'material',
+                    name: '耗材管理',
+                    component: Material
+                },
+                {
+                    path: 'laboratory',
+                    name: '实验室管理',
+                    component: Laboratory
+                },
+                {
+                    path: 'energy',
+                    name: '能源管理',
+                    component: Energy,
                 }
             ]
         }

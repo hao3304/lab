@@ -1,52 +1,49 @@
 <template>
-    <div class="devicerecord">
-        <p class="devicerecord__bread">设备管理>设备使用记录</p>
-        <div class="devicerecord__header">
-            <div class="devicerecord__header-typename">设备位置:</div>
-            <div class="devicerecord__header-list">
-                <div class="devicerecord__header-list-header">
-                    <ul>
-                        <li @click="selectLab1(lab,index)" :class="{'active':index==currentIdx1}" v-for="(lab,index) in labs"
-                            :key="lab.name">{{lab.name}}</li>
-                    </ul>
-                </div>
-                <div class="devicerecord__header-list-content">
-                    <ul class="devicerecord__header-list-content-items">
-                        <li @click="selectLab2(lab,index)" :class="{'active':index==currentIdx2}" v-for="(lab,index) in currentLab1.children"
-                            :key="lab.name" class="devicerecord__header-list-content-item">{{lab.name}}</li>
-                    </ul>
+    <div class="energy">
+        <p class="energy__bread">能源管理</p>
+        <div class="energy__left">
+            <div class="energy__header">
+                <div class="energy__header-typename">设备位置:</div>
+                <div class="energy__header-list">
+                    <div class="energy__header-list-header">
+                        <ul>
+                            <li @click="selectLab1(lab,index)" :class="{'active':index==currentIdx1}" v-for="(lab,index) in labs"
+                                :key="lab.name">{{lab.name}}</li>
+                        </ul>
+                    </div>
+                    <div class="energy__header-list-content">
+                        <ul class="energy__header-list-content-items">
+                            <li @click="selectLab2(lab,index)" :class="{'active':index==currentIdx2}" v-for="(lab,index) in currentLab1.children"
+                                :key="lab.name" class="energy__header-list-content-item">{{lab.name}}</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="devicerecord__body">
-            <div class="devicerecord__body-item" v-for="(info,index) of currentLab2.children" :key="'item'+index">
-                <div class="devicerecord__body-item-devicename">
-                    设备名称: {{info.deviceName}}
-                </div>
-                <div class="devicerecord__body-item-info">
-                    <table class="devicerecord__body-item-info-table">
-                        <tr>
-                            <td class="devicerecord__body-item-info-key">使用人姓名</td>
-                            <td class="devicerecord__body-item-info-value">{{info.name}}</td>
-                        </tr>
-                        <tr>
-                            <td class="devicerecord__body-item-info-key">使用人班级</td>
-                            <td class="devicerecord__body-item-info-value">{{info.class}}</td>
-                        </tr>
-                        <tr>
-                            <td class="devicerecord__body-item-info-key">实验开始时间</td>
-                            <td class="devicerecord__body-item-info-value">{{info.start}}</td>
-                        </tr>
-                        <tr>
-                            <td class="devicerecord__body-item-info-key">实验结束时间</td>
-                            <td class="devicerecord__body-item-info-value">{{info.end}}</td>
-                        </tr>
-                    </table>
-                </div>
-                <div :class="{'devicerecord__body-item-btn-status1':info.status=='实验中','devicerecord__body-item-btn-status2':info.status=='实验结束'}">{{info.status}}</div>
-            </div>
+            <div class="energy__body">
 
+            </div>
         </div>
+        <div class="energy__right">
+            <div class="energy__right-header">
+                <div class="energy__right-header-top">
+                    实验室能源状态
+                </div>
+                <div class="energy__right-header-middle">
+                    <div class="energy__right-header-middle-panel1">
+                        <Switch size="large" />                    
+                    </div>
+                    <div class="energy__right-header-middle-panel2">
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="energy__right-body">
+                <div class="energy__right-body-top">
+                    水能源统计
+                </div>
+            </div>
+        </div>
+
     </div>
 </template>
 
@@ -58,7 +55,7 @@
 
     @Component
 
-    export default class DeviceRecord extends Vue {
+    export default class Energy extends Vue {
         currentLab1: Lab = {}
         currentIdx1: number = 0
 
@@ -228,15 +225,15 @@
     }
 
     interface Lab {
-        name?: string
-        children?: Array < object >
+        name ? : string
+        children ? : Array < object >
     }
 </script>
 
 <style lang="scss">
     @import "~@/styles/mixin/index.scss";
 
-    .devicerecord {
+    .energy {
         height: 100%;
         box-sizing: border-box;
         padding: 15px 25px;
@@ -257,10 +254,15 @@
                 border-left: 6px solid #4a89df;
             }
         }
+        &__left{
+            float: left;
+            width: 1310px;
+            margin-right: 20px;
+        }
 
         &__header {
             box-sizing: border-box;
-            height: px2vh(160);
+            height: px2vh(180);
             border: 1px solid #363c84;
             padding: 20px 60px;
             color: #fff;
@@ -315,68 +317,53 @@
         }
 
         &__body {
-            height: px2vh(700px);
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-            align-items: flex-start;
-            align-content: flex-start;
-            color: #fff;
+            height: px2vh(685px);
+            border: 1px solid #363c84;
+        }
 
-            &-item {
-                flex-basis: 19.0184%;
+        &__right{
+            float:left;
+            width:300px;
+            &-header{
+                height:px2vh(268);
+                box-sizing: border-box;
                 border: 1px solid #363c84;
-                text-align: center;
-                margin-right: 1.22699%;
-                margin-bottom: px2vh(20);
-                &:nth-child(5) {
-                    margin-right: 0;
-                }
-
-                &-devicename {
-                    display: inline-block;
-                    width: 220px;
-                    height: px2vh(50);
-                    border-radius: 8px;
-                    border: solid 2px #4a89df;
-                    margin-top: px2vh(21);
-                    font-size: 18px;
-                    font-family: MicrosoftYaHei;
-                    line-height: px2vh(50);
-                }
-
-                &-info {
-                    padding: px2vh(36px) 30px;
-
-                    &-table {
-                        width: 100%;
-                    }
-
-                    &-key {
-                        text-align: right;
-                    }
-
-                    &-value {
-                        text-align: left;
-                        padding-left: 20px;
-                    }
-                }
-
-                &-btn-status1 {
-                    height: px2vh(40);
-                    line-height: px2vh(40);
+                margin-bottom: px2vh(12);
+                &-top{
+                    height: px2vh(45);
+                    line-height: px2vh(45);
+                    border-bottom:1px solid #363c84;
                     text-align: center;
-                    background: linear-gradient(to right, #4a6bf8, #5bb4fa)
+                    color: #01efbb;
                 }
-
-                &-btn-status2 {
-                    height: px2vh(40);
-                    line-height: px2vh(40);
+                &-middle{
+                    &-panel1{
+                        height:px2vh(60);
+                        background-color: #ffffff;
+                        border-radius: 10px;
+                        margin: px2vh(20) 20px;
+                    }
+                    &-panel2{
+                        height:px2vh(90);
+                        background-color: #ffffff;
+                        border-radius: 10px;
+                        margin: 0 20px;
+                    }
+                }
+              
+            }
+            &-body{
+                height:px2vh(560);
+                box-sizing: border-box;
+                border: 1px solid #363c84;
+                &-top{
+                    height: px2vh(45);
+                    line-height: px2vh(45);
+                    border-bottom:1px solid #363c84;
                     text-align: center;
-                    background: linear-gradient(to right, #e80200, #f35352)
+                    color: #01efbb;
                 }
             }
-
         }
     }
 </style>

@@ -34,12 +34,12 @@
         public menus: object[] = [
             {
                 name: '主页',
-                path: '/',
+                path: '',
                 icon: 'home'
             },
             {
                 name: '设备管理',
-                path: '',
+                path: 'device',
                 icon: 'device',
                 children: [
                     {
@@ -90,10 +90,12 @@
             }
             this.currentMenu = menu
             this.active = menu.name
+            if (!menu.children) {
+                 this.$router.push(`/lab${this.currentMenu.path}`)
+            }
         }
 
         public onSonMenuClick(smenu: any) {
-            debugger
             this.active = smenu.name
             this.$router.push({name: smenu.name})
         }
