@@ -9,6 +9,8 @@ import DeviceRecord from '@/views/DeviceRecord.vue'
 import Material from '@/views/Material.vue'
 import Laboratory from '@/views/Laboratory.vue'
 import Energy from '@/views/Energy.vue'
+import StudentMgr from '@/views/StudentMgr.vue'
+import TeacherMgr from '@/views/TeacherMgr.vue'
 
 Vue.use(Router)
 
@@ -59,6 +61,16 @@ export default new Router({
                     path: 'energy',
                     name: '能源管理',
                     component: Energy,
+                },
+                {
+                    path: 'studentmgr',
+                    name: '学生管理',
+                    component: StudentMgr,
+                },
+                {
+                    path: 'teachermgr',
+                    name: '教师管理',
+                    component: TeacherMgr,
                 }
             ]
         }

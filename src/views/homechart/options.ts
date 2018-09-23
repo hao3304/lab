@@ -322,3 +322,98 @@ export let sysydlOption = {
 
     }]
 }
+
+export let energyOption = {
+    title: {
+        text: '总实验室时间段水能耗',
+        x: 'center',
+        textStyle: {
+            color: '#fff',
+        },
+    },
+    tooltip: {
+        show: false
+    },
+    grid: {
+        left: '0',
+        right: '5%',
+        bottom: '3%',
+        top: '30%',
+        containLabel: true,
+    },
+    legend: {
+        data: ['总实验室用水量', '各实验室日平均用水量'],
+        right: '5%',
+        top: '10%',
+        textStyle: {
+            color: '#fff',
+        }
+    },
+    xAxis: [{
+        type: 'category',
+        name: '日',
+        data: ['05', '06', '07', '08', '09', '10', '11', '12', '13', '14'],
+        axisTick: {
+            alignWithLabel: true
+        },
+        axisLine: {
+            lineStyle: {
+                color: '#DCDCDC'
+            }
+        }
+    }],
+    yAxis: [{
+        type: 'value',
+        name: '人数(人)',
+        nameTextStyle: {
+            color: '#fff'
+        },
+        nameGap: 30,
+        axisLine: {
+            show: false,
+        },
+        axisLabel: {
+            color: '#fff'
+        },
+        axisTick: {
+            show: false,
+        },
+        splitLine: {
+            lineStyle: {
+                color: ' #4B4558'
+            }
+        }
+
+    }],
+    series: [{
+            name: '总实验室用水量',
+            type: 'bar',
+            barWidth: '20%',
+            itemStyle: {
+                color: ['#6BACEA'],
+                barBorderRadius: 5
+            },
+            emphasis: {
+                itemStyle: {
+                    color: ['#EE7F7C']
+                },
+            },
+            data: [7, 9, 10, 8.8, 7, 8.9, 7, 9.1, 8.5, 7]
+        },
+        {
+            name: '各实验室日平均用水量',
+            type: 'bar',
+            barWidth: '20%',
+            itemStyle: {
+                color: ['#F08EB8'],
+                barBorderRadius: 5
+            },
+            emphasis: {
+                itemStyle: {
+                    color: ['#EE7F7C']
+                },
+            },
+            data: [1, 1.5, 1.8, 1.5, 1.2, 1.5, 1.2, 1.5, 1.6, 1.3]
+        }
+    ]
+}

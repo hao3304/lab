@@ -61,8 +61,20 @@
             },
             {
                 name: '人员管理',
-                path: '/user',
-                icon: 'user'
+                path: 'user',
+                icon: 'user',
+                children: [
+                    {
+                        name: '学生管理',
+                        path: '/studentmgr',
+                        icon: '',
+                    } ,
+                    {
+                        name: '教师管理',
+                        path: '/techermgr',
+                        icon: '',
+                    }      
+                ]
             },
             {
                 name: '能源管理',
