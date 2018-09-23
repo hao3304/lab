@@ -1,17 +1,17 @@
 <template>
     <div class="studentmrg">
-         <p class="studentmrg__bread">人员管理>教师管理>魏平老师实验记录</p>
+         <p class="studentmrg__bread">人员管理>学生管理>李江峰实验记录</p>
          <div class="studentmrg__userinfo">
              <div>
-                 <Button type="info">魏平</Button>
+                 <Button type="info">李江峰</Button>
             </div>
             <div>
-                <span>教导班级: </span>
+                <span>班级: </span>
                 <span>高一一班</span>
             </div>
             <div>
-                <span>工号: </span>
-                <span>12</span>
+                <span>学号: </span>
+                <span>23</span>
             </div>
          </div>
          <div class="studentmrg__recordtype">
