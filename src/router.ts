@@ -4,10 +4,13 @@ import Login from '@/views/Login.vue'
 import Main from '@/views/Main.vue'
 import Lab from '@/views/Lab.vue'
 import Home from '@/views/Home.vue'
-import Device from '@/views/Device.vue'
-import DeviceC1 from '@/views/DeviceC1.vue'
-import DeviceC2 from '@/views/DeviceC2.vue'
+import DeviceInfo from '@/views/DeviceInfo.vue'
+import DeviceRecord from '@/views/DeviceRecord.vue'
+import Material from '@/views/Material.vue'
+import Laboratory from '@/views/Laboratory.vue'
 import Energy from '@/views/Energy.vue'
+import StudentMgr from '@/views/StudentMgr.vue'
+import TeacherMgr from '@/views/TeacherMgr.vue'
 
 Vue.use(Router)
 
@@ -35,25 +38,39 @@ export default new Router({
                     component: Home
                 },
                 {
-                    path: 'energy',
-                    name: 'energy',
-                    component: Energy
+                   path: 'deviceinfo',
+                   name: '设备基本信息',
+                   component: DeviceInfo 
+                },
+                { 
+                    path: 'devicerecord',
+                    name: '设备使用记录',
+                    component: DeviceRecord
                 },
                 {
-                   path: 'device',
-                   component: Device ,
-                   children: [
-                       {
-                           path: '',
-                           name: 'baseinfo',
-                           component: DeviceC1
-                       },
-                       {
-                        path: 'baserecord',
-                        name: 'br',
-                        component: DeviceC2
-                       }
-                   ]
+                    path: 'material',
+                    name: '耗材管理',
+                    component: Material
+                },
+                {
+                    path: 'laboratory',
+                    name: '实验室管理',
+                    component: Laboratory
+                },
+                {
+                    path: 'energy',
+                    name: '能源管理',
+                    component: Energy,
+                },
+                {
+                    path: 'studentmgr',
+                    name: '学生管理',
+                    component: StudentMgr,
+                },
+                {
+                    path: 'teachermgr',
+                    name: '教师管理',
+                    component: TeacherMgr,
                 }
             ]
         }

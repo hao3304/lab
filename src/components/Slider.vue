@@ -4,10 +4,10 @@
             实验室管理系统
         </div>
         <ul class="slider__menu">
-            <li v-for="menu in menus" @click="onMenuClick(menu)" :key="menu.path" class="slider__menu-item" :class="{'slider__menu-item--active': active == menu.path}">
+            <li v-for="menu in menus" @click="onMenuClick(menu)" :key="menu.path" class="slider__menu-item" :class="{'slider__menu-item--active': active == menu.name}">
                 {{menu.name}}
-                <ul v-if="!!smenu.children&& smenu.path == menu.path" class="slider__menu-item-sonitem">
-                    <li v-for="sm in smenu.children" :key="sm.path" @click="onSonMenuClick(sm,smenu.path)">
+                <ul v-if="!!currentMenu.children&& currentMenu.path == menu.path" class="slider__menu-item-sonitem" >
+                    <li v-for="sm in currentMenu.children" :key="sm.path" @click.stop="onSonMenuClick(sm)" :class="{'slider__menu-item--active': active == sm.name}">
                         {{sm.name}}
                     </li>
                 </ul>
@@ -18,30 +18,38 @@
 
 <script lang="ts">
     import { Component, Vue } from 'vue-property-decorator'
-    @Component
+    interface IMenu{
+        name?: string,
+        path?: string,
+        icon?: string,
+        children?: Array<IMenu>
+    }
+
+    @Component({
+    })
     export default class Slider extends Vue {
-        // public sonMenus: Array<object> = []
-        public smenu: object = {}
+        
+        public currentMenu: IMenu = {}
 
         public menus: object[] = [
             {
                 name: '主页',
-                path: '/',
+                path: '',
                 icon: 'home'
             },
             {
                 name: '设备管理',
-                path: '/device',
+                path: 'device',
                 icon: 'device',
                 children: [
                     {
                         name: '设备基本信息',
-                        path: '',
+                        path: '/deviceinfo',
                         icon: '',
                     } ,
                     {
                         name: '设备使用记录',
-                        path: '/baserecord',
+                        path: '/devicerecord',
                         icon: '',
                     }      
                 ]
@@ -53,8 +61,20 @@
             },
             {
                 name: '人员管理',
-                path: '/user',
-                icon: 'user'
+                path: 'user',
+                icon: 'user',
+                children: [
+                    {
+                        name: '学生管理',
+                        path: '/studentmgr',
+                        icon: '',
+                    } ,
+                    {
+                        name: '教师管理',
+                        path: '/techermgr',
+                        icon: '',
+                    }      
+                ]
             },
             {
                 name: '能源管理',
@@ -75,14 +95,21 @@
         public active: string = '/home'
 
         public onMenuClick(menu: any): void {
-            this.smenu = menu
-            this.active = menu.path
-            this.$router.push('/lab' + this.active)
+            if (menu.name === this.currentMenu.name) {
+                this.currentMenu = {}
+                this.active = ''
+                return 
+            }
+            this.currentMenu = menu
+            this.active = menu.name
+            if (!menu.children) {
+                 this.$router.push(`/lab${this.currentMenu.path}`)
+            }
         }
 
-        public onSonMenuClick(smenu: any, fpath: string) {
-            this.active = `${fpath}${smenu.path}`
-            this.$router.push({name: 'br'})
+        public onSonMenuClick(smenu: any) {
+            this.active = smenu.name
+            this.$router.push({name: smenu.name})
         }
     }
 </script>
